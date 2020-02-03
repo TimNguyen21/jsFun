@@ -18,7 +18,7 @@ const {
   bookPrompts,
 } = require("../prototypes/index");
 
-describe("PROTOTYPES", () => {
+describe.skip("PROTOTYPES", () => {
   describe("Kitty Prompts", () => {
     it("orangeKittyNames", () => {
       const e = kittyPrompts.orangeKittyNames();
@@ -62,7 +62,7 @@ describe("PROTOTYPES", () => {
         color: "tuxedo"
       }])
     })
-  }), describe("Club Prompts", () => {
+  }), describe.skip("Club Prompts", () => {
     it("membersBelongingToClubs", () => {
       const e = clubPrompts.membersBelongingToClubs({
         Louisa: ["Drama", "Art"],
@@ -89,7 +89,7 @@ describe("PROTOTYPES", () => {
         Christie: ['Newspaper', 'FBLA']
       })
     })
-  }), describe("Mod Prompts", () => {
+  }), describe.skip("Mod Prompts", () => {
     it("studentsPerMod", () => {
       const e = modPrompts.studentsPerMod();
       expect(e).to.deep.equal([{
@@ -106,7 +106,7 @@ describe("PROTOTYPES", () => {
         studentsPerInstructor: 8
       }])
     })
-  }), describe("Cake Prompts", () => {
+  }), describe.skip("Cake Prompts", () => {
     it("stockPerCake", () => {
       const e = cakePrompts.stockPerCake();
       expect(e).to.deep.equal([{
@@ -174,7 +174,7 @@ describe("PROTOTYPES", () => {
         "crystallized ginger": 2
       })
     })
-  }), describe("Class Prompts", () => {
+  }), describe.skip("Class Prompts", () => {
     it("feClassrooms", () => {
       const e = classPrompts.feClassrooms();
       expect(e).to.deep.equal([{
@@ -237,7 +237,7 @@ describe("PROTOTYPES", () => {
       }])
     })
   }),
-  describe("Book prompts", () => {
+  describe.skip("Book prompts", () => {
     it("removeViolence", () => {
       const e = bookPrompts.removeViolence();
       expect(e).to.deep.equal(['1984',
@@ -264,7 +264,7 @@ describe("PROTOTYPES", () => {
       }])
     })
   }),
-  describe("Weather prompts", () => {
+  describe.skip("Weather prompts", () => {
     it("getAverageTemps", () => {
       const e = weatherPrompts.getAverageTemps();
       expect(e).to.deep.equal([
@@ -286,7 +286,7 @@ describe("PROTOTYPES", () => {
       })
     })
   }),
-  describe("National Park Prompts", () => {
+  describe.skip("National Park Prompts", () => {
     it("getParkVisitList", () => {
       const e = nationalParksPrompts.getParkVisitList();
       expect(e).to.deep.equal({
@@ -324,7 +324,7 @@ describe("PROTOTYPES", () => {
         ])
     })
   }),
-  describe("Brewery Prompts", () => {
+  describe.skip("Brewery Prompts", () => {
     it("getBeerCount", () => {
       const e = breweryPrompts.getBeerCount();
       expect(e).to.deep.equal(40)
@@ -355,7 +355,7 @@ describe("PROTOTYPES", () => {
         ibu: 40
       })
     })
-  }), describe("Turing Prompts", () => {
+  }), describe.skip("Turing Prompts", () => {
     it("studentsForEachInstructor", () => {
       const e = turingPrompts.studentsForEachInstructor();
       expect(e).to.deep.equal([{
@@ -423,7 +423,7 @@ describe("PROTOTYPES", () => {
         node: ["Pam", "Robbie", "Leta", "Louisa", "Christie"]
       })
     })
-  }), describe("Boss Prompts", () => {
+  }), describe.skip("Boss Prompts", () => {
     it("bossLoyalty", () => {
       const e = bossPrompts.bossLoyalty();
       expect(e).to.deep.equal([{
@@ -437,7 +437,7 @@ describe("PROTOTYPES", () => {
         sidekickLoyalty: 3
       }])
     })
-  }), describe("Astronomy Prompts", () => {
+  }), describe.skip("Astronomy Prompts", () => {
     it("starsInConstellations", () => {
       const e = astronomyPrompts.starsInConstellations();
       expect(e).to.deep.equal([{
@@ -531,7 +531,7 @@ describe("PROTOTYPES", () => {
       const e = astronomyPrompts.constellationsStarsExistIn();
       expect(e).to.deep.equal(["Canis Major", "Carina", "Boötes", "Auriga", "Orion", "Lyra", "Canis Minor", "The Plow", "Orion", "The Little Dipper"])
     })
-  }), describe("Ultima Prompts", () => {
+  }), describe.skip("Ultima Prompts", () => {
     it("totalDamage", () => {
       const e = ultimaPrompts.totalDamage();
       expect(e).to.deep.equal(113)
@@ -559,7 +559,7 @@ describe("PROTOTYPES", () => {
         }
       }])
     })
-  }), describe("Dinosaur Prompts", () => {
+  }), describe.skip("Dinosaur Prompts", () => {
     it("countAwesomeDinosaurs", () => {
       const e = dinosaurPrompts.countAwesomeDinosaurs();
       expect(e).to.deep.equal({
