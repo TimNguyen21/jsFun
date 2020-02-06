@@ -18,12 +18,14 @@ const {
   bookPrompts,
 } = require("../prototypes/index");
 
-describe.skip("PROTOTYPES", () => {
+describe("PROTOTYPES", () => {
   describe("Kitty Prompts", () => {
     it("orangeKittyNames", () => {
       const e = kittyPrompts.orangeKittyNames();
       expect(e).to.deep.equal(["Tiger", "Snickers"])
-    }), it("sortByAge", () => {
+    }),
+
+    it("sortByAge", () => {
       const e = kittyPrompts.sortByAge();
       expect(e).to.deep.equal([{
         name: "Snickers",
@@ -42,7 +44,9 @@ describe.skip("PROTOTYPES", () => {
         age: 1,
         color: "tuxedo"
       }])
-    }), it("growUp", () => {
+    }),
+
+    it("growUp", () => {
       const e = kittyPrompts.growUp();
       expect(e).to.deep.equal([{
         name: "Snickers",

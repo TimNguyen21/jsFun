@@ -27,10 +27,10 @@ const kittyPrompts = {
 
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.filter(kitty => kitty.color === 'orange').map(kitty => kitty.name);
     return result;
-
     // Annotation:
+    
     // Write your annotation here as a comment
   },
 
