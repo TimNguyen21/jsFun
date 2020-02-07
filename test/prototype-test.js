@@ -66,8 +66,8 @@ describe("PROTOTYPES", () => {
         color: "tuxedo"
       }])
     })
-  }), describe.skip("Club Prompts", () => {
-    it("membersBelongingToClubs", () => {
+  }), describe("Club Prompts", () => {
+    it.skip("membersBelongingToClubs", () => {
       const e = clubPrompts.membersBelongingToClubs({
         Louisa: ["Drama", "Art"],
         Pam: ["Drama", "Chess", "Newspaper"],
@@ -93,7 +93,7 @@ describe("PROTOTYPES", () => {
         Christie: ['Newspaper', 'FBLA']
       })
     })
-  }), describe.skip("Mod Prompts", () => {
+  }), describe("Mod Prompts", () => {
     it("studentsPerMod", () => {
       const e = modPrompts.studentsPerMod();
       expect(e).to.deep.equal([{
@@ -110,7 +110,7 @@ describe("PROTOTYPES", () => {
         studentsPerInstructor: 8
       }])
     })
-  }), describe.skip("Cake Prompts", () => {
+  }), describe("Cake Prompts", () => {
     it("stockPerCake", () => {
       const e = cakePrompts.stockPerCake();
       expect(e).to.deep.equal([{
@@ -132,7 +132,9 @@ describe("PROTOTYPES", () => {
         flavor: "honey",
         inStock: 0
       }])
-    }), it("onlyInStock", () => {
+    }),
+
+    it("onlyInStock", () => {
       const e = cakePrompts.onlyInStock();
       expect(e).to.deep.equal([{
         cakeFlavor: "dark chocolate",
@@ -159,13 +161,15 @@ describe("PROTOTYPES", () => {
         toppings: ["smoked sea salt", "crystallized ginger", "berries"],
         inStock: 21
       }])
-    }), it("totalInventory", () => {
+    }),
+
+    it.skip("totalInventory", () => {
       const e = cakePrompts.totalInventory();
       expect(e).to.deep.equal(59)
-    }), it("allToppings", () => {
+    }), it.skip("allToppings", () => {
       const e = cakePrompts.allToppings();
       expect(e).to.deep.equal(["dutch process cocoa", "toasted sugar", "smoked sea salt", "berries", "edible flowers", "mint", "cranberry", "crystallized ginger"])
-    }), it("groceryList", () => {
+    }), it.skip("groceryList", () => {
       const e = cakePrompts.groceryList();
       expect(e).to.deep.equal({
         "dutch process cocoa": 1,
@@ -178,7 +182,7 @@ describe("PROTOTYPES", () => {
         "crystallized ginger": 2
       })
     })
-  }), describe.skip("Class Prompts", () => {
+  }), describe("Class Prompts", () => {
     it("feClassrooms", () => {
       const e = classPrompts.feClassrooms();
       expect(e).to.deep.equal([{
@@ -204,7 +208,7 @@ describe("PROTOTYPES", () => {
         feCapacity: 110,
         beCapacity: 96
       })
-    }), it("sortByCapacity", () => {
+    }), it.skip("sortByCapacity", () => {
       const e = classPrompts.sortByCapacity();
       expect(e).to.deep.equal([{
         roomLetter: "H",

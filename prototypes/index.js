@@ -106,7 +106,7 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = '';
     return result;
 
     // Annotation:
@@ -142,11 +142,16 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = mods.map(mod => {
+      return {mod: mod.mod,
+              studentsPerInstructor: mod.students/mod.instructors}
+    });
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    //map the mods dataset to output and object of mod # and its students to
+    // instructors ratio
   }
 };
 
@@ -177,11 +182,15 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.map(cake => {
+      return {flavor: cake.cakeFlavor,
+              inStock: cake.inStock}
+    });
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    //map the cake dataset and return the flavor of the cake and how many in stock
   },
 
   onlyInStock() {
@@ -205,22 +214,28 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.filter(cake => cake.inStock > 0);
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // filter cakes that are in stock.
   },
 
   totalInventory() {
     // Return the total amount of cakes in stock e.g.
     // 59
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, cake) => {
+      acc += cake.inStock;
+      return acc
+    },0);
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // use reduce to add all cake in stock to one total value of total overall
+    // cake in the store.
   },
 
   allToppings() {
@@ -228,7 +243,12 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, cake) => {
+      cake['toppings'].forEach(topping => {
+        acc.push(topping)})
+        return acc;
+    }, []);
+
     return result;
 
     // Annotation:
@@ -281,11 +301,12 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.filter(classroom => classroom.program === 'FE');
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // filter the classroom by the program name
   },
 
   totalCapacities() {
