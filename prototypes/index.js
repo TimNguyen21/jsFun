@@ -30,18 +30,22 @@ const kittyPrompts = {
     const result = kitties.filter(kitty => kitty.color === 'orange').map(kitty => kitty.name);
     return result;
     // Annotation:
-    
-    // Write your annotation here as a comment
+
+    // Write your annotation here as a comment:
+    // filter the data set where the kitty color is orange
+    // map the filter to insert name of the kitty that match the orange color
+    // criteria in an array
   },
 
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.sort((a,b) => b.age - a.age);
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // sorting the kitties data by the age, from oldest to youngest
   },
 
   growUp() {
@@ -58,10 +62,22 @@ const kittyPrompts = {
     // },
     // ...etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.map(kitty => {
+      return {
+        name: kitty.name,
+        age: kitty.age + 2,
+        color: kitty.color,
+      };
+    });
     return result;
+    // Annotation:
+    // Write your annotation here as a comment
+    // map a new array with update object instances of a kitty where age is
+    // increase by 2
   }
 };
+
+
 
 
 
