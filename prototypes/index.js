@@ -243,16 +243,21 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = cakes.reduce((acc, cake) => {
-      cake['toppings'].forEach(topping => {
-        acc.push(topping)})
-        return acc;
-    }, []);
-
+    const result = [];
+    cakes.forEach(cake => {
+      cake.toppings.forEach(topping => {
+        if (!result.includes(topping)) {
+          result.push(topping);
+        }
+      });
+    });
     return result;
 
     // Annotation:
     // Write your annotation here as a comment
+    // look at the cake first, then look inside the topping array
+    // inside the topping array, we will look if the current topping is in the
+    // result array. If not, then the topping is pushed into the array;
   },
 
   groceryList() {

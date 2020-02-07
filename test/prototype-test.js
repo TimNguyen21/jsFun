@@ -163,10 +163,10 @@ describe("PROTOTYPES", () => {
       }])
     }),
 
-    it.skip("totalInventory", () => {
+    it("totalInventory", () => {
       const e = cakePrompts.totalInventory();
       expect(e).to.deep.equal(59)
-    }), it.skip("allToppings", () => {
+    }), it("allToppings", () => {
       const e = cakePrompts.allToppings();
       expect(e).to.deep.equal(["dutch process cocoa", "toasted sugar", "smoked sea salt", "berries", "edible flowers", "mint", "cranberry", "crystallized ginger"])
     }), it.skip("groceryList", () => {
@@ -202,7 +202,7 @@ describe("PROTOTYPES", () => {
         program: "FE",
         capacity: 29
       }])
-    }), it("totalCapacities", () => {
+    }), it.skip("totalCapacities", () => {
       const e = classPrompts.totalCapacities();
       expect(e).to.deep.equal({
         feCapacity: 110,
