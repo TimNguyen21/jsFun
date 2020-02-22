@@ -748,7 +748,28 @@ const bossPrompts = {
     //   { bossName: 'Scar', sidekickLoyalty: 16 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let bossesNames = Object.keys(bosses);
+
+    let sideKicksloyalty = bossesNames.reduce((loyalty, boss) => {
+      loyalty.push({bossName: bosses[boss].name,
+        sidekickLoyalty: loyaltyCheck(boss)});
+
+      function loyaltyCheck(bossName) {
+        let loyatyCount = 0;
+        bosses[bossName].sidekicks.forEach(bossSidekick => {
+          sidekicks.forEach(sidekick => {
+            if(bossSidekick.name === sidekick.name) {
+              loyatyCount = loyatyCount + sidekick.loyaltyToBoss;
+            }
+          });
+        });
+        return loyatyCount;
+      }
+
+      return loyalty;
+    },[]);
+
+    const result = sideKicksloyalty;
     return result;
 
     // Annotation:

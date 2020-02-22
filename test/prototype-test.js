@@ -431,7 +431,7 @@ describe("PROTOTYPES", () => {
         node: ["Pam", "Robbie", "Leta", "Louisa", "Christie"]
       })
     })
-  }), describe.skip("Boss Prompts", () => {
+  }), describe("Boss Prompts", () => {
     it("bossLoyalty", () => {
       const e = bossPrompts.bossLoyalty();
       expect(e).to.deep.equal([{
