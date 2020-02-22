@@ -363,7 +363,7 @@ describe("PROTOTYPES", () => {
         ibu: 40
       })
     })
-  }), describe.skip("Turing Prompts", () => {
+  }), describe("Turing Prompts", () => {
     it("studentsForEachInstructor", () => {
       const e = turingPrompts.studentsForEachInstructor();
       expect(e).to.deep.equal([{
@@ -402,7 +402,7 @@ describe("PROTOTYPES", () => {
         cohort1803: 10,
         cohort1801: 9
       })
-    }), it("modulesPerTeacher", () => {
+    }), it.skip("modulesPerTeacher", () => {
       const e = turingPrompts.modulesPerTeacher();
       expect(e).to.deep.equal({
         Pam: [2, 4],
@@ -415,7 +415,7 @@ describe("PROTOTYPES", () => {
         Christie: [1, 2, 3, 4],
         Will: [1, 2, 3, 4]
       })
-    }), it("curriculumPerTeacher", () => {
+    }), it.skip("curriculumPerTeacher", () => {
       const e = turingPrompts.curriculumPerTeacher();
       expect(e).to.deep.equal({
         html: ["Travis", "Louisa"],

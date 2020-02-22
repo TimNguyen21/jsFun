@@ -144,7 +144,7 @@ const modPrompts = {
 
     const result = mods.map(mod => {
       return {mod: mod.mod,
-              studentsPerInstructor: mod.students/mod.instructors}
+        studentsPerInstructor: mod.students/mod.instructors};
     });
     return result;
 
@@ -184,7 +184,7 @@ const cakePrompts = {
 
     const result = cakes.map(cake => {
       return {flavor: cake.cakeFlavor,
-              inStock: cake.inStock}
+        inStock: cake.inStock};
     });
     return result;
 
@@ -228,7 +228,7 @@ const cakePrompts = {
 
     const result = cakes.reduce((acc, cake) => {
       acc += cake.inStock;
-      return acc
+      return acc;
     },0);
     return result;
 
@@ -271,7 +271,7 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = '';
     return result;
 
     // Annotation:
@@ -597,7 +597,10 @@ const turingPrompts = {
     //  { name: 'Robbie', studentCount: 18 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = instructors.map(instructor => {
+      return {name: instructor.name,
+              studentCount: cohorts.find(cohort => instructor.module === cohort.module).studentCount}
+    });
     return result;
 
     // Annotation:
@@ -611,7 +614,12 @@ const turingPrompts = {
     // cohort1804: 10.5
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let result = cohorts.reduce((acc, cohort) => {
+      acc[`cohort${cohort.cohort}`] = cohort.studentCount /
+      instructors.filter(instructor => cohort.module === instructor.module).length
+      return acc
+    }, {});
+
     return result;
 
     // Annotation:
