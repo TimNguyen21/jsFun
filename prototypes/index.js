@@ -640,8 +640,40 @@ const turingPrompts = {
     //     Christie: [1, 2, 3, 4],
     //     Will: [1, 2, 3, 4]
     //   }
+    let teachers = {
+          Pam: [],
+          Brittany: [],
+          Nathaniel: [],
+          Robbie: [],
+          Leta: [],
+          Travis: [],
+          Louisa: [],
+          Christie: [],
+          Will: []
+    }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    instructors.forEach(instructor => {
+      instructor.teaches.forEach(teach => {
+        cohorts.forEach(cohort => {
+          cohort.curriculum.forEach(subject => {
+            if(teach === subject) {
+              if(!teachers[`${instructor.name}`].includes(cohort.module)) {
+                teachers[`${instructor.name}`].push(cohort.module)
+              }
+            }
+          })
+        })
+      })
+    })
+
+    let teachersList = Object.keys(teachers)
+
+    let sortedTeachers = teachersList.reduce((sortTeacher, teacher) => {
+      sortTeacher[teacher] = teachers[teacher].sort((a,b) => a-b);
+      return sortTeacher
+    }, {})
+
+    const result = sortedTeachers;
     return result;
 
     // Annotation:
