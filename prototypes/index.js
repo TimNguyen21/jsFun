@@ -227,8 +227,7 @@ const cakePrompts = {
     // 59
 
     const result = cakes.reduce((acc, cake) => {
-      acc += cake.inStock;
-      return acc;
+      return acc += cake.inStock;
     },0);
     return result;
 
@@ -370,8 +369,24 @@ const bookPrompts = {
     //   'The Curious Incident of the Dog in the Night - Time', 'The Bell Jar',
     //   'Catch-22', 'Treasure Island']
 
+    // books.filter(book => {
+    //   if(!book.genre === "Horror") {
+    //     return book.title;
+    //   }
+    // })
+    // .map(book => {
+    //   return book.title;
+    // });
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = books.reduce((nonViolence, book) => {
+      if(book.genre === 'Horror' || book.genre === 'True Crime') {
+        return nonViolence;
+      } else {
+        nonViolence.push(book.title);
+        return nonViolence;
+      }
+    },[]);
+
     return result;
 
     // Annotation:
