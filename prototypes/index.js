@@ -599,7 +599,7 @@ const turingPrompts = {
 
     const result = instructors.map(instructor => {
       return {name: instructor.name,
-              studentCount: cohorts.find(cohort => instructor.module === cohort.module).studentCount}
+        studentCount: cohorts.find(cohort => instructor.module === cohort.module).studentCount};
     });
     return result;
 
@@ -616,8 +616,8 @@ const turingPrompts = {
 
     let result = cohorts.reduce((acc, cohort) => {
       acc[`cohort${cohort.cohort}`] = cohort.studentCount /
-      instructors.filter(instructor => cohort.module === instructor.module).length
-      return acc
+      instructors.filter(instructor => cohort.module === instructor.module).length;
+      return acc;
     }, {});
 
     return result;
@@ -641,16 +641,16 @@ const turingPrompts = {
     //     Will: [1, 2, 3, 4]
     //   }
     let teachers = {
-          Pam: [],
-          Brittany: [],
-          Nathaniel: [],
-          Robbie: [],
-          Leta: [],
-          Travis: [],
-          Louisa: [],
-          Christie: [],
-          Will: []
-    }
+      Pam: [],
+      Brittany: [],
+      Nathaniel: [],
+      Robbie: [],
+      Leta: [],
+      Travis: [],
+      Louisa: [],
+      Christie: [],
+      Will: []
+    };
 
     instructors.forEach(instructor => {
       instructor.teaches.forEach(teach => {
@@ -658,22 +658,23 @@ const turingPrompts = {
           cohort.curriculum.forEach(subject => {
             if(teach === subject) {
               if(!teachers[`${instructor.name}`].includes(cohort.module)) {
-                teachers[`${instructor.name}`].push(cohort.module)
+                teachers[`${instructor.name}`].push(cohort.module);
               }
             }
-          })
-        })
-      })
-    })
+          });
+        });
+      });
+    });
 
-    let teachersList = Object.keys(teachers)
+    let teachersList = Object.keys(teachers);
 
-    let sortedTeachers = teachersList.reduce((sortTeacher, teacher) => {
+    teachersList.reduce((sortTeacher, teacher) => {
       sortTeacher[teacher] = teachers[teacher].sort((a,b) => a-b);
-      return sortTeacher
-    }, {})
+      return sortTeacher;
+    }, {});
 
-    const result = sortedTeachers;
+    const result = teachers;
+
     return result;
 
     // Annotation:
@@ -690,7 +691,29 @@ const turingPrompts = {
     //   recursion: [ 'Pam', 'Leta' ]
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let curriculumList = cohorts.reduce((curriculumList, cohort) => {
+      cohort.curriculum.forEach(subject => {
+        if(!curriculumList.includes(subject)) {
+          curriculumList.push(subject);
+        }
+      });
+      return curriculumList;
+    },[]);
+
+    const result = curriculumList.reduce((subjectList, subject) => {
+      instructors.forEach(instructor => {
+        instructor.teaches.forEach(teach => {
+          if(teach === subject) {
+            if(!subjectList[subject]) {
+              subjectList[subject] = [];
+            }
+            subjectList[subject].push(instructor.name);
+          }
+        });
+      });
+      return subjectList;
+    }, {});
+
     return result;
 
     // Annotation:
