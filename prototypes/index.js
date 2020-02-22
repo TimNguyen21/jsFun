@@ -321,8 +321,20 @@ const classPrompts = {
     //   feCapacity: 110,
     //   beCapacity: 96
     // }
+    let classSummary = {
+      feCapacity: 0,
+      beCapacity: 0
+    };
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    classrooms.forEach(classroom => {
+      if(classroom.program === 'FE') {
+        classSummary['feCapacity'] = classSummary['feCapacity'] + classroom.capacity;
+      } else if(classroom.program === 'BE') {
+        classSummary['beCapacity'] = classSummary['beCapacity'] + classroom.capacity;
+      }
+    });
+
+    const result = classSummary;
     return result;
 
     // Annotation:
@@ -332,7 +344,7 @@ const classPrompts = {
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.sort((a,b) => a.capacity - b.capacity);
     return result;
 
     // Annotation:
@@ -669,7 +681,7 @@ const turingPrompts = {
     let teachersList = Object.keys(teachers);
 
     teachersList.reduce((sortTeacher, teacher) => {
-      sortTeacher[teacher] = teachers[teacher].sort((a,b) => a-b);
+      sortTeacher[teacher] = teachers[teacher].sort();
       return sortTeacher;
     }, {});
 
