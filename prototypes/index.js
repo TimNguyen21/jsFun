@@ -482,7 +482,7 @@ const weatherPrompts = {
     // [ 40, 40, 44.5, 43.5, 57, 35, 65.5, 62, 14, 46.5 ]
 
     const result = weather.map(temperature => {
-      return (temperature.temperature.high + temperature.temperature.low) / 2
+      return (temperature.temperature.high + temperature.temperature.low) / 2;
     });
     return result;
 
@@ -499,9 +499,9 @@ const weatherPrompts = {
 
     const result = weather.reduce((sunnyWeather, type) => {
       if(type.type.includes('sunny')) {
-        sunnyWeather.push(`${type.location} is ${type.type}.`)
+        sunnyWeather.push(`${type.location} is ${type.type}.`);
       }
-      return sunnyWeather
+      return sunnyWeather;
     }, []);
     return result;
 
@@ -545,7 +545,20 @@ const nationalParksPrompts = {
     //   parksVisited: ["Rocky Mountain", "Acadia", "Zion"]
     //}
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let isVisited = {
+      parksToVisit: [],
+      parksVisited: []
+    };
+
+    nationalParks.forEach(park => {
+      if(park.visited === false) {
+        isVisited['parksToVisit'].push(park.name);
+      } else {
+        isVisited['parksVisited'].push(park.name);
+      }
+    });
+
+    const result = isVisited;
     return result;
 
     // Annotation:
@@ -562,7 +575,9 @@ const nationalParksPrompts = {
     // { Florida: 'Everglades' } ]
 
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = nationalParks.map(park => {
+      return {[`${park.location}`]: park.name}
+    });
     return result;
 
     // Annotation:
@@ -585,7 +600,14 @@ const nationalParksPrompts = {
     //   'backpacking',
     //   'rock climbing' ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = nationalParks.reduce((acc, park) => {
+      park.activities.forEach(activity => {
+        if(!acc.includes(activity)) {
+          acc.push(activity);
+        }
+      })
+      return acc
+    }, []);
     return result;
 
     // Annotation:
