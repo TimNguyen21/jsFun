@@ -169,7 +169,7 @@ describe("PROTOTYPES", () => {
     }), it("allToppings", () => {
       const e = cakePrompts.allToppings();
       expect(e).to.deep.equal(["dutch process cocoa", "toasted sugar", "smoked sea salt", "berries", "edible flowers", "mint", "cranberry", "crystallized ginger"])
-    }), it.skip("groceryList", () => {
+    }), it("groceryList", () => {
       const e = cakePrompts.groceryList();
       expect(e).to.deep.equal({
         "dutch process cocoa": 1,
@@ -272,7 +272,7 @@ describe("PROTOTYPES", () => {
       }])
     })
   }),
-  describe.skip("Weather prompts", () => {
+  describe("Weather prompts", () => {
     it("getAverageTemps", () => {
       const e = weatherPrompts.getAverageTemps();
       expect(e).to.deep.equal([
@@ -284,7 +284,7 @@ describe("PROTOTYPES", () => {
       expect(e).to.deep.equal(['Atlanta, Georgia is sunny.', 'New Orleans, Louisiana is sunny.', 'Raleigh, North Carolina is mostly sunny.']
       )
     }),
-    it("findHighestHumidity", () => {
+    it.only("findHighestHumidity", () => {
       const e = weatherPrompts.findHighestHumidity();
       expect(e).to.deep.equal({
         location: 'Portland, Oregon',

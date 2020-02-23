@@ -295,7 +295,29 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = '';
+    let toppings = cakes.reduce((toppingList, cake) => {
+      cake.toppings.forEach(topping => {
+        if(!toppingList.includes(topping)) {
+          toppingList.push(topping);
+        }
+      });
+      return toppingList;
+    },[]);
+
+    const result = toppings.reduce((needs, toppingNeed) => {
+      if(!needs[toppingNeed]) {
+        needs[toppingNeed] = 0;
+      }
+      cakes.forEach(cake => {
+        cake.toppings.forEach(topping => {
+          if(toppingNeed === topping) {
+            needs[topping]++;
+          }
+        });
+      });
+      return needs;
+    }, {});
+
     return result;
 
     // Annotation:
@@ -459,7 +481,9 @@ const weatherPrompts = {
     // return an array of all the average temperatures. Eg:
     // [ 40, 40, 44.5, 43.5, 57, 35, 65.5, 62, 14, 46.5 ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = weather.map(temperature => {
+      return (temperature.temperature.high + temperature.temperature.low) / 2
+    });
     return result;
 
     // Annotation:
@@ -473,7 +497,12 @@ const weatherPrompts = {
     // 'New Orleans, Louisiana is sunny.',
     // 'Raleigh, North Carolina is mostly sunny.' ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = weather.reduce((sunnyWeather, type) => {
+      if(type.type.includes('sunny')) {
+        sunnyWeather.push(`${type.location} is ${type.type}.`)
+      }
+      return sunnyWeather
+    }, []);
     return result;
 
     // Annotation:
@@ -489,7 +518,7 @@ const weatherPrompts = {
     //   temperature: { high: 49, low: 38 }
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = weather.sort((a,b) => b.humidity - a.humidity)[0];
     return result;
 
     // Annotation:
