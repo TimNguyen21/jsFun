@@ -445,7 +445,7 @@ describe("PROTOTYPES", () => {
         sidekickLoyalty: 3
       }])
     })
-  }), describe.skip("Astronomy Prompts", () => {
+  }), describe("Astronomy Prompts", () => {
     it("starsInConstellations", () => {
       const e = astronomyPrompts.starsInConstellations();
       expect(e).to.deep.equal([{

@@ -654,7 +654,7 @@ const breweryPrompts = {
     // ]
 
     const result = breweries.map(brewery => {
-      return {name:brewery.name, beerCount: brewery.beers.length}
+      return {name:brewery.name, beerCount: brewery.beers.length};
     });
 
     return result;
@@ -671,11 +671,11 @@ const breweryPrompts = {
     const result = breweries.reduce((totalBeer, brewery) => {
       brewery.beers.forEach(beer => {
         if(!totalBeer.includes(beer)) {
-          totalBeer.push(beer)
+          totalBeer.push(beer);
         }
-      })
-      return totalBeer
-    }, []).sort((a,b) => b.abv - a.abv)[0]
+      });
+      return totalBeer;
+    }, []).sort((a,b) => b.abv - a.abv)[0];
 
     return result;
 
@@ -937,7 +937,7 @@ const astronomyPrompts = {
     //     color: 'red' }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = stars.filter(star => star.constellation === 'Orion');
     return result;
 
     // Annotation:
@@ -955,7 +955,19 @@ const astronomyPrompts = {
     //   red: [{obj}]
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let starColors = stars.reduce((colors, star) => {
+      if(!colors.includes(star.color)) {
+        colors.push(star.color);
+      }
+      return colors;
+    }, []);
+
+    const result = starColors.reduce((starInfo, color) => {
+      starInfo[color] = stars.filter(star => star.color === color);
+
+      return starInfo;
+    }, {});
+
     return result;
 
     // Annotation:
@@ -977,7 +989,10 @@ const astronomyPrompts = {
     //    "The Little Dipper" ]
 
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = stars.sort((a,b) => a.visualMagnitude - b.visualMagnitude).map(star => {
+      return star.constellation;
+    }).filter(star => star != '');
+
     return result;
 
     // Annotation:
