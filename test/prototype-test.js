@@ -332,7 +332,7 @@ describe("PROTOTYPES", () => {
         ])
     })
   }),
-  describe.skip("Brewery Prompts", () => {
+  describe("Brewery Prompts", () => {
     it("getBeerCount", () => {
       const e = breweryPrompts.getBeerCount();
       expect(e).to.deep.equal(40)

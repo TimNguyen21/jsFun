@@ -576,7 +576,7 @@ const nationalParksPrompts = {
 
 
     const result = nationalParks.map(park => {
-      return {[`${park.location}`]: park.name}
+      return {[`${park.location}`]: park.name};
     });
     return result;
 
@@ -605,8 +605,8 @@ const nationalParksPrompts = {
         if(!acc.includes(activity)) {
           acc.push(activity);
         }
-      })
-      return acc
+      });
+      return acc;
     }, []);
     return result;
 
@@ -634,7 +634,10 @@ const breweryPrompts = {
     // Return the total beer count of all beers for every brewery e.g.
     // 40
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.reduce((totalBeer, brewery) => {
+      totalBeer += brewery.beers.length;
+      return totalBeer;
+    }, 0);
     return result;
 
     // Annotation:
@@ -650,7 +653,10 @@ const breweryPrompts = {
     // ...etc.
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.map(brewery => {
+      return {name:brewery.name, beerCount: brewery.beers.length}
+    });
+
     return result;
 
     // Annotation:
@@ -662,7 +668,15 @@ const breweryPrompts = {
     // e.g.
     // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = breweries.reduce((totalBeer, brewery) => {
+      brewery.beers.forEach(beer => {
+        if(!totalBeer.includes(beer)) {
+          totalBeer.push(beer)
+        }
+      })
+      return totalBeer
+    }, []).sort((a,b) => b.abv - a.abv)[0]
+
     return result;
 
     // Annotation:
