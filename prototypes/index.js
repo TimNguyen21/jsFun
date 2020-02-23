@@ -106,7 +106,32 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = '';
+    let clubMembers = clubs.reduce((members, club) => {
+      club.members.forEach(member => {
+        if(!members.includes(member)) {
+          members.push(member);
+        }
+      });
+      return members;
+    },[]);
+
+    const result = clubMembers.reduce((acc, clubMember) => {
+      acc[clubMember] = findClub(clubMember);
+      return acc;
+    }, {});
+
+    function findClub(currentMember) {
+      currentClub = [];
+      clubs.forEach(club => {
+        club.members.forEach(member => {
+          if(member === currentMember) {
+            currentClub.push(club.club);
+          }
+        });
+      });
+      return currentClub;
+    }
+
     return result;
 
     // Annotation:
@@ -787,7 +812,7 @@ const bossPrompts = {
 
     let bossesNames = Object.keys(bosses);
 
-    let sideKicksloyalty = bossesNames.reduce((loyalty, boss) => {
+    const result = bossesNames.reduce((loyalty, boss) => {
       loyalty.push({bossName: bosses[boss].name,
         sidekickLoyalty: loyaltyCheck(boss)});
 
@@ -806,7 +831,6 @@ const bossPrompts = {
       return loyalty;
     },[]);
 
-    const result = sideKicksloyalty;
     return result;
 
     // Annotation:
