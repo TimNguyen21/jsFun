@@ -568,7 +568,7 @@ describe("PROTOTYPES", () => {
       }])
     })
   }), describe("Dinosaur Prompts", () => {
-    it.only("countAwesomeDinosaurs", () => {
+    it("countAwesomeDinosaurs", () => {
       const e = dinosaurPrompts.countAwesomeDinosaurs();
       expect(e).to.deep.equal({
         'Jurassic Park': 5,
@@ -577,7 +577,7 @@ describe("PROTOTYPES", () => {
         'Jurassic World': 11,
         'Jurassic World: Fallen Kingdom': 18
       })
-    }), it("averageAgePerMovie", () => {
+    }), it.only("averageAgePerMovie", () => {
       const e = dinosaurPrompts.averageAgePerMovie();
       expect(e).to.deep.equal({
         'Steven Spielberg': {

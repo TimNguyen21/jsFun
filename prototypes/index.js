@@ -1181,7 +1181,27 @@ const dinosaurPrompts = {
     // })
     let humanNames = Object.keys(humans);
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let castActors = movies.reduce((acc, movie) => {
+      acc = acc.concat(movie.cast)
+      return acc
+    },[])
+
+    let inMovieHumans = [...new Set(castActors)];
+
+    let uncastHumans = humanNames.reduce((acc, name) => {
+      if(!inMovieHumans.includes(name)){
+        acc.push(name);
+      }
+      return acc;
+    }, [])
+    .map(person => {
+      return {name: person,
+      nationality: humans[person].nationality,
+      imdbStarMeterRating: humans[person].imdbStarMeterRating}
+    })
+    .sort((a,b) => (a.nationality > b.nationality) ? 1 : -1)
+
+    const result = uncastHumans;
     return result;
 
     // Annotation:
