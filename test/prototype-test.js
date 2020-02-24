@@ -567,7 +567,7 @@ describe("PROTOTYPES", () => {
         }
       }])
     })
-  }), describe.skip("Dinosaur Prompts", () => {
+  }), describe("Dinosaur Prompts", () => {
     it("countAwesomeDinosaurs", () => {
       const e = dinosaurPrompts.countAwesomeDinosaurs();
       expect(e).to.deep.equal({

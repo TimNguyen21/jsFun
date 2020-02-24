@@ -1130,6 +1130,7 @@ const dinosaurPrompts = {
 
     // Annotation:
     // Write your annotation here as a comment
+
   },
 
   uncastActors() {
@@ -1158,6 +1159,13 @@ const dinosaurPrompts = {
       }]
     */
 
+    // .cast.forEach(person => {
+    //   if(person === human) {
+    //     acc.push(human);
+    //   }
+    // })
+    let humanNames = Object.keys(humans);
+
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
@@ -1180,8 +1188,47 @@ const dinosaurPrompts = {
       { name: 'Chris Pratt', ages: [ 36, 39 ] },
       { name: 'Bryce Dallas Howard', ages: [ 34, 37 ] } ]
     */
+    let humanNames = Object.keys(humans);
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let humansInMovies = [];
+
+    humanNames.forEach(name => {
+      movies.forEach(movie => {
+        movie.cast.forEach(person => {
+          if(name === person) {
+            humansInMovies.push(person);
+          }
+        });
+      });
+    });
+
+    let humanArray = humansInMovies.reduce((acc, human) => {
+      if(!acc.includes(human)) {
+        acc.push(human);
+      }
+      return acc;
+    },[]);
+
+    const result = humanArray.reduce((acc, human) => {
+      acc.push({
+        name: human,
+        ages: ageFunction(human)
+      });
+      return acc;
+    },[]);
+
+    function ageFunction(name) {
+      let ageArray = [];
+      movies.forEach(movie => {
+        movie.cast.forEach(person => {
+          if (name === person) {
+            ageArray.push(movie.yearReleased - humans[name].yearBorn);
+          }
+        });
+      });
+      return ageArray;
+    }
+
     return result;
 
     // Annotation:
