@@ -1194,12 +1194,12 @@ const dinosaurPrompts = {
       }
       return acc;
     }, [])
-    .map(person => {
+      .map(person => {
       return {name: person,
       nationality: humans[person].nationality,
       imdbStarMeterRating: humans[person].imdbStarMeterRating}
     })
-    .sort((a,b) => (a.nationality > b.nationality) ? 1 : -1)
+      .sort((a,b) => (a.nationality > b.nationality) ? 1 : -1)
 
     const result = uncastHumans;
     return result;
